@@ -28,7 +28,7 @@ A first ruleset for the Quickstart
       name = event:attr("name").defaultsTo("Monkey");
     }
 
-    send_directive("say", {"something": "Hello"})
+    send_directive("say", {"something": "Hello" + name})
   }
    
 }

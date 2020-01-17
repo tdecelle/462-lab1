@@ -63,7 +63,12 @@ module.exports = {
         if (fired) {
           await runAction(ctx, void 0, "send_directive", [
             "say",
-            { "something": "Hello" }
+            {
+              "something": await ctx.applyFn(ctx.scope.get("+"), ctx, [
+                "Hello",
+                ctx.scope.get("name")
+              ])
+            }
           ], []);
         }
         if (fired)
