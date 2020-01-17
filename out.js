@@ -56,6 +56,43 @@ module.exports = {
       },
       "body": async function (ctx, runAction, toPairs) {
         ctx.scope.set("name", await ctx.applyFn(ctx.scope.get("head"), ctx, [await ctx.applyFn(ctx.scope.get("klog"), ctx, [
+            await ctx.applyFn(ctx.scope.get("defaultsTo"), ctx, [
+              await ctx.applyFn(await ctx.modules.get(ctx, "event", "attr"), ctx, ["name"]),
+              "Monkey"
+            ]),
+            "Name: "
+          ])]));
+        var fired = true;
+        if (fired) {
+          await runAction(ctx, void 0, "send_directive", [
+            "say",
+            {
+              "something": await ctx.applyFn(ctx.scope.get("+"), ctx, [
+                "Hello ",
+                ctx.scope.get("name")
+              ])
+            }
+          ], []);
+        }
+        if (fired)
+          ctx.emit("debug", "fired");
+        else
+          ctx.emit("debug", "not fired");
+      }
+    },
+    "hello_monkey2": {
+      "name": "hello_monkey2",
+      "select": {
+        "graph": { "echo": { "monkey": { "expr_0": true } } },
+        "state_machine": {
+          "start": [[
+              "expr_0",
+              "end"
+            ]]
+        }
+      },
+      "body": async function (ctx, runAction, toPairs) {
+        ctx.scope.set("name", await ctx.applyFn(ctx.scope.get("head"), ctx, [await ctx.applyFn(ctx.scope.get("klog"), ctx, [
             await ctx.applyFn(await ctx.modules.get(ctx, "event", "attr"), ctx, ["name"]) || "Monkey",
             "Name: "
           ])]));
