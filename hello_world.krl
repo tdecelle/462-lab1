@@ -16,7 +16,7 @@ A first ruleset for the Quickstart
     }
   }
    
-  rule hello_monkey {
+  rule hello_world {
     select when echo hello
     send_directive("say", {"something": "Hello World"})
   }
