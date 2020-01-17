@@ -1,0 +1,7 @@
+1. I received the same result exept for the txn_id
+
+2. I received an error after deleting the channel: "ECI not found: Channel ID"
+
+3. I received an empty array of directives.
+
+4. 
