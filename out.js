@@ -55,17 +55,20 @@ module.exports = {
         }
       },
       "body": async function (ctx, runAction, toPairs) {
-        ctx.scope.set("name", await ctx.applyFn(ctx.scope.get("defaultsTo"), ctx, [
-          await ctx.applyFn(await ctx.modules.get(ctx, "event", "attr"), ctx, ["name"]),
-          "Monkey"
-        ]));
+        ctx.scope.set("name", await ctx.applyFn(ctx.scope.get("head"), ctx, [await ctx.applyFn(ctx.scope.get("klog"), ctx, [
+            await ctx.applyFn(ctx.scope.get("defaultsTo"), ctx, [
+              await ctx.applyFn(await ctx.modules.get(ctx, "event", "attr"), ctx, ["name"]),
+              "Monkey"
+            ]),
+            "Name: "
+          ])]));
         var fired = true;
         if (fired) {
           await runAction(ctx, void 0, "send_directive", [
             "say",
             {
               "something": await ctx.applyFn(ctx.scope.get("+"), ctx, [
-                "Hello",
+                "Hello ",
                 ctx.scope.get("name")
               ])
             }
