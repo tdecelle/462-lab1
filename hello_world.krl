@@ -26,6 +26,7 @@ A first ruleset for the Quickstart
 
     pre {
       name = event:attr("name") || ("Monkey")
+      klog(name)
     }
 
     send_directive("say", {"something": "Hello " + name})
