@@ -1,7 +1,5 @@
-1. I received the same result exept for the txn_id
+1. I received the same result execpt for the txn_id. I believe it is because they have the same ruleset that they are giving the same response.
 
-2. I received an error after deleting the channel: "ECI not found: Channel ID"
+2. I received an error after deleting the channel: "ECI not found: Channel ID" because the channel no longer exists the pico is returning an error.
 
-3. I received an empty array of directives.
-
-4. 
+3. I received an empty array of directives because the endpoint doesn't do anything, but the channel exists.
